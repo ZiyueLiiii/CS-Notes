@@ -216,8 +216,20 @@ Output: 7 -> 8 -> 0 -> 7
 
 ```java
 public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    Stack<Integer> l1Stack = buildStack(l1);
-    Stack<Integer> l2Stack = buildStack(l2);
+    //Stack<Integer> l1Stack = buildStack(l1); //用push不要用这个buildStack
+    //Stack<Integer> l2Stack = buildStack(l2);
+    
+    Stack<Integer> s1 = new Stack<Integer>();
+    Stack<Integer> s2 = new Stack<Integer>();
+      while(l1 != null) {
+            s1.push(l1.val);
+            l1 = l1.next;
+        };
+        while(l2 != null) {
+            s2.push(l2.val);
+            l2 = l2.next;
+        }
+        
     ListNode head = new ListNode(-1);
     int carry = 0;
     while (!l1Stack.isEmpty() || !l2Stack.isEmpty() || carry != 0) {
